@@ -3,6 +3,7 @@ import random
 import BD
 import json
 
+
 # ==========================
 # Funciones auxiliares
 # ==========================
@@ -10,6 +11,27 @@ import json
 def limpiar_pantalla():
     os.system("cls" if os.name == "nt" else "clear")
 
+def pedir_entero(mensaje, minimo=1, maximo=None):
+    """
+    Solicita un número entero al usuario con validación.
+    - mensaje: texto mostrado al usuario
+    - minimo: valor mínimo permitido (default=1)
+    - maximo: valor máximo permitido (default=None, sin límite)
+    """
+    while True:
+        try:
+            valor = int(input(mensaje))
+            if valor < minimo:
+                print(f"⚠️ El valor debe ser mayor o igual a {minimo}.")
+                continue
+            if maximo is not None and valor > maximo:
+                print(f"⚠️ El valor debe ser menor o igual a {maximo}.")
+                continue
+            return valor
+        except ValueError:
+            print("⚠️ Entrada inválida. Ingresa un número entero.")
+            
+            
 
 # ==========================
 # Menú de selección de tablas y métodos (sin librerías externas)
@@ -72,7 +94,7 @@ def menu_empleado():
             print("2. misma cantidad que en PRODUCCION")
             opcion3 = input("Escriba su opcion(numero): ")
             if opcion3 == "1":
-                N_empleados = int(input("Cantidad de empleados: "))
+                N_empleados = int(pedir_entero("Cantidad de empelados: "))
                 BD.cargar_empleados_sinteticos(N_empleados)
             elif opcion3 == "2":
                 N_empleados, N_puestos, NJEFES = BD.ContarNumeroDatos()
@@ -84,7 +106,7 @@ def menu_empleado():
             print("2. ACTUALIZAR como PRODUCCION")
             opcion3 = input("Escriba su opcion(numero): ")
             if opcion3 == "1":
-                N_empleados = int(input("Cantidad de empleados: "))
+                N_empleados = int(pedir_entero("Cantidad de empelados: "))
                 BD.cargar_empleados_hash(random.random(), N_empleados)
             elif opcion3 == "2":
                 N_empleados, N_puestos, NJEFES = BD.ContarNumeroDatos()
@@ -96,7 +118,7 @@ def menu_empleado():
             print("2. ACTUALIZAR como PRODUCCION")
             opcion3 = input("Escriba su opcion(numero): ")
             if opcion3 == "1":
-                N_empleados = int(input("Cantidad de empleados: "))
+                N_empleados = int(pedir_entero("Cantidad de empelados: "))
                 BD.cargar_empleados_enmascarar(random.random(), N_empleados)
             elif opcion3 == "2":
                 N_empleados, N_puestos, NJEFES = BD.ContarNumeroDatos()
@@ -125,7 +147,7 @@ def menu_puesto():
             print("2. ACTUALIZAR como PRODUCCION")
             opcion3 = input("Escriba su opcion(numero): ")
             if opcion3 == "1":
-                N_puestos = int(input("Cantidad de puestos: "))
+                N_puestos = int(pedir_entero("Cantidad de puestos: "))
                 BD.cargar_puestos_hash(random.random(), N_puestos)
             elif opcion3 == "2":
                 N_empleados, N_puestos, NJEFES = BD.ContarNumeroDatos()
@@ -151,7 +173,7 @@ def menu_jefes():
             if opcion3 == "1":
                 jefes = []
                 for i in range(1, 10):
-                    jefes.append(int(input(f"Cantidad de jefes del departamento {i}: ")))
+                    jefes.append(int(pedir_entero(f"Cantidad de jefes del departamento {i}: ")))
                 NJEFES = ",".join(map(str, jefes))
                 BD.cargar_jefes_sinteticos(NJEFES, random.random())
             elif opcion3 == "2":
