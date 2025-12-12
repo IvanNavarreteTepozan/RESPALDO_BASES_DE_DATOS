@@ -1,8 +1,9 @@
 #README:
 Requisitos:
+
   -sistema operatvo windows
   - tener instalado python 3.11.9
-  - se recomienda tener pgAdmin 4 como nterfaz grafica para a Base de datos
+  - se recomienda tener pgAdmin 4 como interfaz grafica para a Base de datos
   -Ademas de descargar los modulos mencionados en el documento requirement.txt en esta carpeta, si no los tiene  ejecute cada una de las siguientes lineas en su CMD
     pip install Faker
     pip install pandas
