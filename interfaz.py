@@ -41,7 +41,9 @@ def menu_tablas_metodos():
             print("Entrada inválida, se omite esta tabla.")
 
     # Guardamos en JSON
-    with open("conf_autosave.json", "w", encoding="utf-8") as f:
+    ruta_base = os.path.dirname(os.path.abspath(__file__))
+    ruta = os.path.join(ruta_base,"conf_autosave.json" )
+    with open(ruta, "w", encoding="utf-8") as f:
         json.dump(resultados, f, ensure_ascii=False, indent=4)
 
     print("\n✅ Archivo 'conf_autosave.json' generado con éxito.")

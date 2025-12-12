@@ -4,11 +4,12 @@ import os
 import random
 import psycopg2
 import json
-import time
 
 def probar_credenciales():
     try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
             params = json.load(f)
         params= dict(list(params.items())[:5])
 
@@ -18,7 +19,8 @@ def probar_credenciales():
         cur.close()
         conn.close()
         return 1
-    except psycopg2.Error as e:
+    except (psycopg2.Error, json.JSONDecodeError) as e:
+        print(f"[ERROR] Fallo de conexión o lectura de JSON: {e}")
         return 0
 
 def generar_df(n,SEED):
@@ -47,7 +49,9 @@ def generar_df(n,SEED):
 
 def df_to_json(df)->int:
     try:
-        filename = f"Data.json"
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        filename = os.path.join(ruta_base, "Data.json")
+        
         if os.path.exists(filename):
             os.remove(filename)
         df.to_json(filename, orient="records", indent=4, force_ascii=False)
@@ -58,7 +62,9 @@ def df_to_json(df)->int:
 
 def reg_bitacora(cevento,coperacion,nregistros,ctabla):
     try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
             params = json.load(f)
         params= dict(list(params.items())[:5])
         conn = psycopg2.connect(**params)
@@ -76,7 +82,9 @@ def reg_bitacora(cevento,coperacion,nregistros,ctabla):
         return e.pgerror
 def cargar_DatosBase(SEED):
     try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
             params = json.load(f)
 
         conn = psycopg2.connect(**params)
@@ -141,7 +149,9 @@ def cargar_empleados_sinteticos(N):
 
 def cargar_puestos_sinteticos(SEED):
     try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
             params = json.load(f)
         params= dict(list(params.items())[:5])
         conn = psycopg2.connect(**params)
@@ -167,7 +177,9 @@ def cargar_puestos_sinteticos(SEED):
 
 def cargar_jefes_sinteticos(NJEFES,SEED):
     try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
             params = json.load(f)
         params= dict(list(params.items())[:5])
         conn = psycopg2.connect(**params)
@@ -196,7 +208,9 @@ def cargar_jefes_sinteticos(NJEFES,SEED):
 
 def cargar_empleados_hash(SEED,N_empleados):
   try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
             params = json.load(f)
         params= dict(list(params.items())[:5])
         conn = psycopg2.connect(**params)
@@ -221,7 +235,9 @@ def cargar_empleados_hash(SEED,N_empleados):
 
 def cargar_puestos_hash(SEED,N_puestos):
   try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
             params = json.load(f)
         params= dict(list(params.items())[:5])
         conn = psycopg2.connect(**params)
@@ -246,7 +262,9 @@ def cargar_puestos_hash(SEED,N_puestos):
 
 def cargar_empleados_enmascarar(SEED, N_empleados):
   try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
           params = json.load(f)
         params= dict(list(params.items())[:5])
         conn = psycopg2.connect(**params)
@@ -271,7 +289,9 @@ def cargar_empleados_enmascarar(SEED, N_empleados):
 
 def Limpiar_QA():
   try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
           params = json.load(f)
         params= dict(list(params.items())[:5])
         conn = psycopg2.connect(**params)
@@ -295,7 +315,9 @@ def Limpiar_QA():
         return e.pgerror
 def Limpiar_TP():
   try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
           params = json.load(f)
         params= dict(list(params.items())[:5])
         conn = psycopg2.connect(**params)
@@ -319,7 +341,9 @@ def Limpiar_TP():
         return e.pgerror
 def ContarNumeroDatos():
   try:
-        with open("CREDENCIALES_QA.json") as f:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_credenciales = os.path.join(ruta_base, "CREDENCIALES_QA.json")
+        with open(ruta_credenciales) as f:
           params = json.load(f)
         params= dict(list(params.items())[:5])
         conn = psycopg2.connect(**params)
