@@ -1,0 +1,7 @@
+{
+  "dbname": "DESARROLLO",
+  "user": "postgres",
+  "password": "12IvNavExp",
+  "host": "proyectoabd.cha0oqy6crlg.us-east-2.rds.amazonaws.com",
+  "port": 5432
+}
