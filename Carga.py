@@ -18,7 +18,7 @@ def leer_conf_autosave(archivo="conf_autosave.json"):
                   if metodo == "datos sintéticos":
                     print(f"Tabla: {tabla}, Método: {metodo}")
                     BD.Limpiar_QA()
-                    BD.cargar_empleados_sinteticos(random.random(), N_puestos)
+                    BD.cargar_empleados_sinteticos(N_puestos)
                   elif metodo == "datos hasheados":
                     print(f"Tabla: {tabla}, Método: {metodo}")
                     BD.Limpiar_QA()
