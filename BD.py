@@ -89,7 +89,9 @@ def cargar_DatosBase(SEED):
 
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
-        with open(f"Data.json", "r", encoding="utf-8") as f:
+
+        filename = os.path.join(ruta_base, "Data.json")
+        with open(filename, "r", encoding="utf-8") as f:
             data = f.read()
 
         cur.execute("SELECT FN_AgregarEmpleados_JSON(%s::jsonb, %s);", (data,round(SEED,5)))
@@ -130,7 +132,7 @@ def cargar_empleados_sinteticos(N):
         SEED=random.random()
         res=Empleados_sinteticos(100,SEED)
       total+=res
-      print(total/LOTES*100,"%")
+      print(round(total/LOTES*100,2),"%")
     res=0
     while res!=1:
       SEED=random.random()

@@ -6,7 +6,7 @@ def leer_conf_autosave(archivo="conf_autosave.json"):
     try:
         ruta_base = os.path.dirname(os.path.abspath(__file__))
         ruta_credenciales = os.path.join(ruta_base, archivo)
-        with open(archivo, "r", encoding="utf-8") as f:
+        with open(ruta_credenciales, "r", encoding="utf-8") as f:
             datos = json.load(f)
         N_empleados, N_puestos, NJEFES = BD.ContarNumeroDatos()
         print("\nContenido del archivo conf_autosave.json:\n")
