@@ -1,0 +1,14 @@
+[
+    {
+        "tabla": "TAB_EMPLEADO",
+        "metodo": "datos enmascarados"
+    },
+    {
+        "tabla": "TAB_PUESTO",
+        "metodo": "datos sintéticos"
+    },
+    {
+        "tabla": "TAB_JEFESDEPARTAMENTO",
+        "metodo": "datos sintéticos"
+    }
+]
