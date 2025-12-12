@@ -53,7 +53,10 @@ consideraciones para aunto-ejecución de guardado diario:
 • 	Asegúrate de que se repita todos los días.
 4. 	Configura la acción (Action)
 • 	Selecciona Iniciar un programa.
-• 	En Programa/script, pon la ruta del archivo Carga.py
+• 	En Programa/script, pon la ruta del ejecutable de python.
+• 	En Agregar Argumentos, pon la ruta del archivo CARGA.py
+
+
 
 
 
