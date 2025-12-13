@@ -7,12 +7,20 @@ Requisitos:
 
 -Tener instalado python 3.11.9
 
+&nbsp;	Descarga:
+
+&nbsp;		https://www.python.org/downloads/
+
 
 
 -Se recomienda tener pgAdmin 4 como interfaz grafica para a Base de datos
 
+&nbsp;	Descaga:
 
--Además de descargar los módulos mencionados en el documento requirement.txt en esta carpeta, si no los tiene  ejecute cada una de las siguientes líneas en su CMD una vez que haya instalado Python 3.11
+&nbsp;		https://www.postgresql.org/ftp/pgadmin/pgadmin4/v9.11/windows/
+
+
+-Además de descargar los módulos mencionados en el documento requirement.txt de esta carpeta, si no los tiene  ejecute cada una de las siguientes líneas en su CMD una vez que haya instalado Python 3.11
 
 
 pip install Faker
